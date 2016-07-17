@@ -86,7 +86,7 @@ public class LoginActivity extends Activity {
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        //실패
                     }
                 });
 
