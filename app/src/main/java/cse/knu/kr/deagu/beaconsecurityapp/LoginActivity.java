@@ -81,7 +81,7 @@ public class LoginActivity extends Activity {
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        //성공
+                        //성공!
                     }
 
                     @Override
