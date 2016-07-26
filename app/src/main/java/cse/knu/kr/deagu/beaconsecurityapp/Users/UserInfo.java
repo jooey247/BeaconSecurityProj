@@ -7,9 +7,10 @@ import java.io.Serializable;
  */
 public class UserInfo implements Serializable {
 
-    private String userID;
-    private String userPW;
-    private String userSign;
+    private String userId;
+    private String userPw;
+    private String plcName;
+    private String userName;
 
     public String getUserName() {
         return userName;
@@ -19,40 +20,41 @@ public class UserInfo implements Serializable {
         this.userName = userName;
     }
 
-    private String userName;
-
-    public String getUserID() {
-        return userID;
+    public String getPlcName() {
+        return plcName;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setPlcName(String plcName) {
+        this.plcName = plcName;
     }
 
-    public String getUserPW() {
-        return userPW;
+
+
+    public String getUserPw() {
+        return userPw;
     }
 
-    public void setUserPW(String userPW) {
-        this.userPW = userPW;
+    public void setUserPw(String userPw) {
+        this.userPw = userPw;
     }
 
-    public String getUserSign() {
-        return userSign;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserSign(String userSign) {
-        this.userSign = userSign;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public UserInfo(String userID, String userPW, String userSign) {
-        this.userID = userID;
-        this.userPW = userPW;
-        this.userSign = userSign;
+    public UserInfo(String userId, String userPw, String plcName,String userName) {
+        this.userId = userId;
+        this.userPw = userPw;
+        this.plcName = plcName;
+        this.userName= userName;
     }
 
-    public UserInfo(String userID, String userPW) {
-        this.userID = userID;
-        this.userPW = userPW;
+    public UserInfo(String userId, String userPw) {
+        this.userId = userId;
+        this.userPw = userPw;
     }
 }

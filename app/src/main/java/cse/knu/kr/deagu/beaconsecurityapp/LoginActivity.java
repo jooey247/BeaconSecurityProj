@@ -154,6 +154,88 @@ public class LoginActivity extends Activity {
         }
     }
 
+    private class Signup extends AsyncTask<Void, Void, Void> {
+        private final String TAG = "Signup";
+
+        private UserInfo userInfo;
+        private String result;
+
+        /*
+   `    회원가입
+        */
+
+        public Signup(UserInfo userInfo) {
+            this.userInfo = userInfo;
+        }
+
+
+        //doInBackground 후에 실행되는 메소드
+        //ok인지 아닌지도 얘가 판단해야함!
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            String urlString = Static.baseURL + "users";
+
+            HttpURLConnection conn = null;
+            OutputStream os = null;
+            InputStream is = null;
+            ByteArrayOutputStream baos = null;
+            URL url = null;
+            try {
+                url = new URL(urlString);
+
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setConnectTimeout(2500 * 1000);
+                conn.setReadTimeout(200 * 1000);
+                conn.setRequestMethod("POST");
+
+                conn.setRequestProperty("Cache-Control", "no-cache");
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setRequestProperty("Accept", "application/json");
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+
+                Gson gson = new Gson();
+                JSONObject job = new JSONObject(gson.toJson(userInfo));
+                Log.d(TAG, job.toString());
+                os = conn.getOutputStream();
+                os.write(job.toString().getBytes());
+                os.flush();
+
+                //서버에서 결과 받아오기
+
+                int responseCode = conn.getResponseCode();
+
+                switch (responseCode) {
+                    case 200:
+                    case 201:
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        StringBuilder sb = new StringBuilder();
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            sb.append(line + "\n");
+                        }
+                        br.close();
+                        /*
+                        회원가입 결과 가져오기
+                         */
+                        result = sb.toString();
+                        Log.d(TAG, result);
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+    }
+
 
 
 }
