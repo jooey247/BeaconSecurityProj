@@ -5,12 +5,10 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 
 import com.google.gson.Gson;
 import com.loopj.android.http.RequestParams;
@@ -32,13 +30,13 @@ import java.net.URL;
 import cse.knu.kr.deagu.beaconsecurityapp.Users.UserInfo;
 
 /**
- * Created by juhee on 2016-07-15.
+ * Created by juhee on 2016-07-25.
+ * 회원가입
  */
-public class LoginActivity extends Activity {
+public class SignupActivity extends Activity {
     EditText editId;
     EditText editpw;
-    Button btnLogin;
-
+    Button btnSign;
     String macId;
 
     @Override
@@ -47,11 +45,9 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         Log.i("start", "start");
 
-        editId=(EditText)findViewById(R.id.edit_id);
-        editpw=(EditText)findViewById(R.id.edit_pw);
-        //get user's MacAdress
-        //can not modify!
-        macId=getMcAdr();
+        editId = (EditText) findViewById(R.id.edit_id);
+        editpw = (EditText) findViewById(R.id.edit_pw);
+        macId = getMcAdr();
         editId.setText(macId);
         editId.setFocusable(false);
         editId.setClickable(false);
@@ -67,38 +63,41 @@ public class LoginActivity extends Activity {
     }
 
     public void onClick(View view) {
-
-
-        String id=editId.getText().toString();
-        String pw=editpw.getText().toString();
+        String id = editId.getText().toString();
+        String pw = editpw.getText().toString();
 
         RequestParams params = new RequestParams();
 
-        switch (view.getId()){
-            case R.id.btn_login:
-                new Login(new UserInfo(id, pw)).execute();
+        switch (view.getId()) {
+            case R.id.btn_sign:
+                new Signup(new UserInfo(id, pw)).execute();
 
                 break;
         }
-        }
 
-    private class Login extends AsyncTask<Void, Void, Void>{
+    }
 
-        private final String TAG = "Login";
+    private class Signup extends AsyncTask<Void, Void, Void> {
+        private final String TAG = "Signup";
 
         private UserInfo userInfo;
         private String result;
 
-
         /*
-        로그인
-         */
-        public Login(UserInfo userInfo){
-            this.userInfo=userInfo;
+   `    회원가입
+        */
+
+        public Signup(UserInfo userInfo) {
+            this.userInfo = userInfo;
         }
+
+
+        //doInBackground 후에 실행되는 메소드
+        //ok인지 아닌지도 얘가 판단해야함!
+
         @Override
         protected Void doInBackground(Void... params) {
-            String urlString = Static.baseURL + "users_login";
+            String urlString = Static.baseURL + "users";
 
             HttpURLConnection conn = null;
             OutputStream os = null;
@@ -107,7 +106,8 @@ public class LoginActivity extends Activity {
             URL url = null;
             try {
                 url = new URL(urlString);
-                conn = (HttpURLConnection)url.openConnection();
+
+                conn = (HttpURLConnection) url.openConnection();
                 conn.setConnectTimeout(2500 * 1000);
                 conn.setReadTimeout(200 * 1000);
                 conn.setRequestMethod("POST");
@@ -120,10 +120,12 @@ public class LoginActivity extends Activity {
 
                 Gson gson = new Gson();
                 JSONObject job = new JSONObject(gson.toJson(userInfo));
-
+                Log.d(TAG, job.toString());
                 os = conn.getOutputStream();
                 os.write(job.toString().getBytes());
                 os.flush();
+
+                //서버에서 결과 받아오기
 
                 int responseCode = conn.getResponseCode();
 
@@ -134,13 +136,15 @@ public class LoginActivity extends Activity {
                         StringBuilder sb = new StringBuilder();
                         String line;
                         while ((line = br.readLine()) != null) {
-                            sb.append(line+"\n");
+                            sb.append(line + "\n");
                         }
                         br.close();
+                        /*
+                        회원가입 결과 가져오기
+                         */
                         result = sb.toString();
-                        Log.d(TAG,  result);
+                        Log.d(TAG, result);
                 }
-
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (ProtocolException e) {
@@ -152,11 +156,7 @@ public class LoginActivity extends Activity {
             }
             return null;
         }
+
     }
 
-
-
 }
-
-
-

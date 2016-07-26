@@ -34,7 +34,7 @@
                 android:id="@+id/btn_login"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:text="SignIn"
+                android:text="Login"
                 android:onClick="onClick"
                 android:layout_gravity="right" />
 
