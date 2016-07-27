@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 
 import com.google.gson.Gson;
@@ -39,6 +40,9 @@ public class LoginActivity extends Activity {
     EditText editpw;
     Button btnLogin;
 
+    RadioButton rb_user;
+    RadioButton rb_buser;
+
     String macId;
 
     @Override
@@ -49,6 +53,9 @@ public class LoginActivity extends Activity {
 
         editId=(EditText)findViewById(R.id.edit_id);
         editpw=(EditText)findViewById(R.id.edit_pw);
+        rb_user=(RadioButton)findViewById(R.id.brn_user);
+        rb_buser=(RadioButton)findViewById(R.id.brn_place);
+
         //get user's MacAdress
         //can not modify!
         macId=getMcAdr();
