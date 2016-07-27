@@ -9,6 +9,122 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior" tools:showIn="@layout/app_bar_main"
     tools:context=".MainActivity">
 
-    <TextView android:text="Hello World!" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/wifi_s"
+        android:checked="false"
+        android:layout_alignStart="@+id/flash_s"
+        android:text="WiFi "
+        android:layout_gravity="right" />
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sound_s"
+        android:checked="false"
+        android:layout_below="@+id/wifi_s"
+        android:layout_alignStart="@+id/wifi_s"
+        android:layout_gravity="center|right"
+        android:text="Sound " />
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/camera_s"
+        android:checked="false"
+        android:layout_below="@+id/sound_s"
+        android:layout_alignStart="@+id/sound_s"
+        android:layout_gravity="center|right"
+        android:text="Camera " />
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/flash_s"
+        android:checked="false"
+        android:layout_gravity="center|right"
+        android:text="Flash "
+        android:layout_below="@+id/camera_s"
+        android:layout_alignParentEnd="true" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButton"
+        android:layout_marginTop="70dp"
+        android:checked="false"
+        android:layout_gravity="right|center"
+        android:layout_below="@+id/flash_s"
+        android:layout_alignParentEnd="true"
+        android:textOn="ON"
+        android:textOff="OFF"/>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButton2"
+        android:layout_below="@+id/toggleButton"
+        android:layout_alignParentEnd="true"
+        android:textOn="ON"
+        android:textOff="OFF"/>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButton3"
+        android:layout_below="@+id/toggleButton2"
+        android:layout_alignParentEnd="true"
+        android:textOn="ON"
+        android:textOff="OFF"/>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButton4"
+        android:layout_below="@+id/toggleButton3"
+        android:layout_alignParentEnd="true"
+        android:textOn="ON"
+        android:textOff="OFF"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WiFi"
+        android:id="@+id/textView2"
+        android:textSize="35dp"
+        android:layout_above="@+id/toggleButton2"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sound"
+        android:id="@+id/textView3"
+        android:textSize="35dp"
+        android:layout_alignBottom="@+id/toggleButton2"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Camera"
+        android:id="@+id/textView4"
+        android:textSize="35dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flash"
+        android:id="@+id/textView5"
+        android:textSize="35dp"
+        android:layout_below="@+id/toggleButton3"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
