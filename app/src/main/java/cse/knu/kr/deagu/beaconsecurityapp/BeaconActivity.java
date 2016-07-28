@@ -38,7 +38,7 @@ public abstract class BeaconActivity extends AppCompatActivity implements Beacon
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        //serContentView(R.layout.content_main);
+        setContentView(R.layout.activity_main);
 
         bm=BeaconManager.getInstanceForApplication(this);
         //tv=(TextView)findViewById(R.id.TextView);
