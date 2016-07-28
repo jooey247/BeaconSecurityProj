@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity
         dlDrawer.setDrawerListener(dtToggle);
         dtToggle.syncState();
 
+
      //   NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
      //   navigationView.setNavigationItemSelectedListener(this);
     }

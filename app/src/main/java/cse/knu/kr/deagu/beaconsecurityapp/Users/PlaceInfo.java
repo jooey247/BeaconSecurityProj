@@ -10,7 +10,7 @@ public class PlaceInfo implements Serializable {
     private String plcName;
     private String plcPw;
     private String plcAdrs;
-    private String plcOption;
+    private String plcOption; //0000~1111 wifi,sound,camera,flash 순서로 정보저장
     private String userName;
 
     public PlaceInfo(String plcId, String plcPw) {
