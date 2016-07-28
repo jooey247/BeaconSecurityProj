@@ -11,6 +11,11 @@
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize" />
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"></TableLayout>
+
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -23,11 +28,6 @@
             android:layout_height="match_parent"
             android:background="#303F9F">
 
-            <include
-                android:layout_width="wrap_content"
-                android:layout_height="454dp"
-                layout="@layout/content_main"
-                android:layout_gravity="center_horizontal|top" />
         </FrameLayout>
 
         <View
@@ -36,6 +36,16 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="#3F51B5" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Textview" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Run"
+            android:id="@+id/button"
+            android:onClick="OnButtonClicked"/>
     </android.support.v4.widget.DrawerLayout>
 
 </LinearLayout>
